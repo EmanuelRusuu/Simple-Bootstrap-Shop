@@ -26,6 +26,27 @@ body {
 
 /* ---------------HEADER ENDS HERE--------------- */
 
+.details-and-favbuy-group {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.favandbuy-group {
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.favandbuy-group .bi {
+    color: black;
+    font-size: 2rem;
+}
+
 .nav-link-home {
     margin-left: 1rem;
 }
@@ -217,6 +238,15 @@ ul {
     .footer-col {
         width: 100%;
     }
+}
+
+.fa-heart {
+    color: #ddd;
+    cursor: pointer;
+}
+
+.favandbuy-group .nav-link {
+    cursor: pointer;
 }
 
 /* ---------------SECTION FOOTER ENDS HERE--------------- */
