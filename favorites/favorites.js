@@ -1,5 +1,8 @@
-// Add click event listener to all heart icons
 document.addEventListener('DOMContentLoaded', function () {
+    // Retrieve favorites from local storage and parse the JSON
+    const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+
+    // Loop through the heart icons and update their state based on the favorites in local storage
     const heartIcons = document.querySelectorAll('.bi-heart');
     heartIcons.forEach((icon) => {
         const cardId = icon.closest('.card').getAttribute('data-id');
@@ -12,10 +15,8 @@ document.addEventListener('DOMContentLoaded', function () {
             icon.classList.add('bi-heart');
             icon.style.color = '';
         }
-        icon.addEventListener('click', () => {
-            favorites[cardId] = !favorites[cardId];
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-            toggleFavorite(icon);
-        });
     });
+
+    // Display the favorites
+    displayFavorites(favorites);
 });
