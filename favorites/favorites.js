@@ -1,22 +1,27 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Retrieve favorites from local storage and parse the JSON
-    const favorites = JSON.parse(localStorage.getItem('favorites') || '{}');
+// favorites.js
+function loadFavorites() {
+    const favorites = JSON.parse(localStorage.getItem('favorites')) || {};
 
-    // Loop through the heart icons and update their state based on the favorites in local storage
-    const heartIcons = document.querySelectorAll('.bi-heart');
-    heartIcons.forEach((icon) => {
-        const cardId = icon.closest('.card').getAttribute('data-id');
-        if (favorites[cardId]) {
-            icon.classList.remove('bi-heart');
-            icon.classList.add('bi-heart-fill');
-            icon.style.color = 'red';
-        } else {
-            icon.classList.remove('bi-heart-fill');
-            icon.classList.add('bi-heart');
-            icon.style.color = '';
-        }
-    });
+    const favoritesContainer = document.getElementById('favorites');
+    favoritesContainer.innerHTML = '';
 
-    // Display the favorites
-    displayFavorites(favorites);
+    for (const cardId in favorites) {
+        const cardData = getCardDataById(cardId);
+        if (!cardData) continue;
+
+        const cardElement = createCardElement(cardData);
+        favoritesContainer.appendChild(cardElement);
+    }
+}
+
+function getCardDataById(cardId) {
+    // TODO: implement logic to retrieve card data by ID
+}
+
+function createCardElement(cardData) {
+    // TODO: implement logic to create HTML element for card data
+}
+
+window.addEventListener('load', () => {
+    loadFavorites();
 });
